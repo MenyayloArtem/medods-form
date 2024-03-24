@@ -142,6 +142,7 @@ export default {
                 :label="'Пол'"
                 :placeholder="'М/Ж'"
                 v-model="personalData.state"
+                :width="65"
                 />
               </div>
               

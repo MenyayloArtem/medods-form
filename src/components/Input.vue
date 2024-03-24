@@ -12,17 +12,28 @@ export default {
 
     data() {
         return ({
-            defaultType : ""
+            // inputType : ""
+            wasFocus : false
 
         })
     },
 
-    mounted() {
-        // this.defaultType = this.props.type
+    computed : {
+        inputType () {
+            let type = null
 
-        // if (this.props.type == "date") {
-        //     this.props.type = "text"
-        // }
+            if (this.type == 'date') {
+                if (this.wasFocus) {
+                    type = 'date'
+                } else {
+                    type = "text"
+                }
+            } else {
+                type = this.type || "text"
+            }
+
+            return type
+        }
     }
 }
 </script>
@@ -42,9 +53,10 @@ export default {
         }"
     
         @input="$emit('input', $event.target.value)"
+        @focus="wasFocus = true"
         :class="{warn : warn}"
         :value="value"
-        :type="type || 'text'"
+        :type="inputType"
         id="input">
 
         <div class="warn-message" v-if="warn">
