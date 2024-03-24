@@ -133,6 +133,7 @@ export default {
               <div class="row">
                 <Input 
                 :label="'Дата рождения'"
+                :placeholder="'Укажите дату рождения'"
                 :type="'date'"
                 v-model.trim="v$.personalData.birthdate.$model"
                 :warn="v$.personalData.birthdate.$error ? v$.personalData.birthdate.required$.$message : false"
@@ -142,7 +143,7 @@ export default {
                 :label="'Пол'"
                 :placeholder="'М/Ж'"
                 v-model="personalData.state"
-                :width="65"
+                :width="100"
                 />
               </div>
               
@@ -229,6 +230,7 @@ export default {
             <Input 
             :label="'Дата выдачи'"
             :type="'date'"
+            :placeholder="'Укажите дату выдачи'"
             v-model="v$.passport.issueDate.$model"
             :warn="v$.passport.issueDate.$error ? v$.passport.issueDate.required$.$message : false"
             />

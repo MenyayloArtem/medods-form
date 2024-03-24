@@ -106,6 +106,7 @@ export default {
 
        .select-options__option {
         width: 100%;
+        padding: 5px 0;
        }
     }
 </style>
