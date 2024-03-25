@@ -50,7 +50,7 @@ export default {
         >{{ label }}</label>
         <input 
         class="shadow"
-        :placeholder="placeholder"
+        :placeholder="placeholder || label"
         v-if="type != 'date'"
         :checked="value"
         
@@ -70,7 +70,11 @@ export default {
             <div class="placeholder"
             :class="{hasValue : value}"
             >
-                {{ value || placeholder }}
+            <div class="span">
+                {{ value || "Дата" }}
+            </div>
+                
+                <img class="calendar-icon" src="/calendar.svg" width="20" fill="#999"/>
             </div>
             <input type="date" name="" id="">
         </div>
@@ -105,6 +109,8 @@ export default {
             }
 
             .placeholder {
+            display: flex;
+            justify-content: space-between;
                 position: absolute;
                 pointer-events: none;
                 display: flex;
@@ -120,6 +126,10 @@ export default {
 
                 &.hasValue {
                     color: inherit;
+                }
+
+                .calendar-icon {
+                    opacity: 0.5;
                 }
             }
         }
