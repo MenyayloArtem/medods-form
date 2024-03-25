@@ -14,6 +14,8 @@ export default {
           step : 0,
           steps : ["personalData", "address", "passport"],
           documentTypes : ["Паспорт","Свидетельство о рождении","Вод. удостоверение"],
+          clientGroupOptions : ['VIP', 'Проблемные', 'ОМС'],
+          doctors : ["Иванов", "Захаров","Чернышева"],
           titleEnum : {
           personalData : "Личные данные",
           address : "Адрес",
@@ -149,7 +151,7 @@ export default {
               <Select 
               multiple
               :label="'Группа клиентов'"
-              :options="['VIP', 'Проблемные', 'ОМС']"
+              :options="clientGroupOptions"
               :placeholder="'Выберите группу'"
               v-model="personalData.clientGroup"
               :warn="v$.personalData.clientGroup.$error ? v$.personalData.clientGroup.required$.$message : false"
@@ -163,7 +165,8 @@ export default {
               :warn="v$.personalData.phone.$error ? v$.personalData.phone.phoneNumber$.$message : false"
               />
 
-              <Input 
+              <Select
+              :options="doctors" 
               :label="'Лечащий врач'"
               v-model.trim="personalData.doctor"
               />
